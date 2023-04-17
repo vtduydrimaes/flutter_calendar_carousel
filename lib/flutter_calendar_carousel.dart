@@ -328,11 +328,12 @@ class _CalendarState<T extends EventInterface>
 
   @override
   Widget build(BuildContext context) {
-    final headerText = widget.headerText + "123";
+    final headerText = widget.headerText;
     return Container(
       width: widget.width,
       height: widget.height,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           CalendarHeader(
             showHeader: widget.showHeader,
