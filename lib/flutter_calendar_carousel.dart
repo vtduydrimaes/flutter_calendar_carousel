@@ -392,7 +392,9 @@ class _CalendarState<T extends EventInterface>
               
             itemCount:
                 widget.weekFormat ? this._weeks.length : this._dates.length,
-            physics: NeverScrollableScrollPhysics(),
+            physics: widget.isScrollable
+                ? widget.pageScrollPhysics
+                : NeverScrollableScrollPhysics(),
             scrollDirection: widget.scrollDirection,
             onPageChanged: (index) {
               this._setDate(index);
