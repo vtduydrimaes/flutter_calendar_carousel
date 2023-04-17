@@ -408,9 +408,12 @@ class _CalendarState<T extends EventInterface>
                     pageSnapping: widget.pageSnapping,
                   ),
 
-                  SizedBox(
-                    width: double.infinity,
-                    height: double.infinity,
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: widget.height,
+                    decoration: const BoxDecoration(
+                      color: Colors.amber,
+                    )
                   )
                 ]
               )
