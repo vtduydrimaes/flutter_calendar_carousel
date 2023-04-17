@@ -396,7 +396,7 @@ class _CalendarState<T extends EventInterface>
                 ? widget.pageScrollPhysics
                 : NeverScrollableScrollPhysics(),
             scrollDirection: widget.scrollDirection,
-            controller: _controller,
+            // controller: _controller,
             itemBuilder: (context, index) {
               return widget.weekFormat ? weekBuilder(index) : builder(index);
             },
