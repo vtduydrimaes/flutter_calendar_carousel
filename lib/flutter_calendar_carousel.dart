@@ -388,7 +388,7 @@ class _CalendarState<T extends EventInterface>
             localeDate: _localeDate,
           ),
           Expanded(
-              child: ListView.builder(
+              child: PageView.builder(
               
             itemCount:
                 widget.weekFormat ? this._weeks.length : this._dates.length,
@@ -396,29 +396,15 @@ class _CalendarState<T extends EventInterface>
                 ? widget.pageScrollPhysics
                 : NeverScrollableScrollPhysics(),
             scrollDirection: widget.scrollDirection,
-            // controller: _controller,
+            onPageChanged: (index) {
+              this._setDate(index);
+            },
+            controller: _controller,
             itemBuilder: (context, index) {
               return widget.weekFormat ? weekBuilder(index) : builder(index);
             },
+            pageSnapping: widget.pageSnapping,
           ),),
-          // Expanded(
-          //     child: PageView.builder(
-              
-          //   itemCount:
-          //       widget.weekFormat ? this._weeks.length : this._dates.length,
-          //   physics: widget.isScrollable
-          //       ? widget.pageScrollPhysics
-          //       : NeverScrollableScrollPhysics(),
-          //   scrollDirection: widget.scrollDirection,
-          //   onPageChanged: (index) {
-          //     this._setDate(index);
-          //   },
-          //   controller: _controller,
-          //   itemBuilder: (context, index) {
-          //     return widget.weekFormat ? weekBuilder(index) : builder(index);
-          //   },
-          //   pageSnapping: widget.pageSnapping,
-          // ),),
         ],
       ),
     );
