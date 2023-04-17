@@ -332,6 +332,7 @@ class _CalendarState<T extends EventInterface>
     final headerText = widget.headerText;
     return Container(
       width: widget.width,
+      height: widget.height,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -386,7 +387,7 @@ class _CalendarState<T extends EventInterface>
             weekdayTextStyle: widget.weekdayTextStyle,
             localeDate: _localeDate,
           ),
-          Flexible(
+          Expanded(
               child: PageView.builder(
             itemCount:
                 widget.weekFormat ? this._weeks.length : this._dates.length,
