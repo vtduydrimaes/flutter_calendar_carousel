@@ -412,7 +412,7 @@ class _CalendarState<T extends EventInterface>
                     width: MediaQuery.of(context).size.width,
                     height: widget.height,
                     decoration: const BoxDecoration(
-                      color: Colors.amber,
+                      color: Colors.transparent,
                     )
                   )
                 ]
