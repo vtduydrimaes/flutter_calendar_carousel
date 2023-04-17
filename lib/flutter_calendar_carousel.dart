@@ -275,7 +275,7 @@ class _CalendarState<T extends EventInterface>
     /// setup pageController
     _controller = PageController(
       initialPage: this._pageNum,
-      keepPage: true,
+      keepPage: false,
       viewportFraction: widget.viewportFraction,
 
       /// width percentage
