@@ -275,7 +275,7 @@ class _CalendarState<T extends EventInterface>
     /// setup pageController
     _controller = PageController(
       initialPage: this._pageNum,
-      keepPage: false,
+      keepPage: true,
       viewportFraction: widget.viewportFraction,
 
       /// width percentage
@@ -388,23 +388,33 @@ class _CalendarState<T extends EventInterface>
             localeDate: _localeDate,
           ),
           Expanded(
-              child: PageView.builder(
-              
-            itemCount:
-                widget.weekFormat ? this._weeks.length : this._dates.length,
-            physics: widget.isScrollable
-                ? widget.pageScrollPhysics
-                : NeverScrollableScrollPhysics(),
-            scrollDirection: widget.scrollDirection,
-            onPageChanged: (index) {
-              this._setDate(index);
-            },
-            controller: _controller,
-            itemBuilder: (context, index) {
-              return widget.weekFormat ? weekBuilder(index) : builder(index);
-            },
-            pageSnapping: widget.pageSnapping,
-          ),),
+              child: Stack(
+                children: [
+
+                  PageView.builder(
+                    itemCount:
+                        widget.weekFormat ? this._weeks.length : this._dates.length,
+                    physics: widget.isScrollable
+                        ? widget.pageScrollPhysics
+                        : NeverScrollableScrollPhysics(),
+                    scrollDirection: widget.scrollDirection,
+                    onPageChanged: (index) {
+                      this._setDate(index);
+                    },
+                    controller: _controller,
+                    itemBuilder: (context, index) {
+                      return widget.weekFormat ? weekBuilder(index) : builder(index);
+                    },
+                    pageSnapping: widget.pageSnapping,
+                  ),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                  )
+                ]
+              )
+          ),
         ],
       ),
     );
