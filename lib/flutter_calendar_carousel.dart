@@ -332,7 +332,6 @@ class _CalendarState<T extends EventInterface>
     final headerText = widget.headerText;
     return Container(
       width: widget.width,
-      height: widget.height,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
