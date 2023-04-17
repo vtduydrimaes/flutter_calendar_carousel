@@ -326,6 +326,7 @@ class _CalendarState<T extends EventInterface>
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     final headerText = widget.headerText;
